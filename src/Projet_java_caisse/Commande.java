@@ -9,7 +9,7 @@ public class Commande {
     int nbOfPeople;
     ArrayList<Product> product = new ArrayList<>();
 
-    public Commande(int tabNum, String date, int nbofPeople, ArrayList<Product> product){
+    public Commande(int tabNum, String date, int nbOfPeople, ArrayList<Product> product){
         this.tabNum = tabNum;
         this.date = date;
         this.nbOfPeople = nbOfPeople;
@@ -29,10 +29,7 @@ public class Commande {
         obj.put("nbOfPeople", nbOfPeople);
         JSONArray produits = new JSONArray();
         for (Product p : product) {
-            JSONObject pro = new JSONObject();
-            pro.put("name", p.nom);
-            pro.put("price", p.prix);
-            produits.put(pro);
+            produits.put(p.toJSONObject());
         }
         obj.put("products", produits);
         return obj;

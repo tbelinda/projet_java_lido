@@ -14,4 +14,10 @@ public class Dessert extends Product {
     public void afficher_detail() {
         System.out.println("Dessert (" + calories + " kcal) : " + nom + " | " + prix + "€");
     }
+
+    public JSONObject toJSONObject() {
+        JSONObject obj = super.toJSONObject();
+        obj.put("calories", calories);
+        return obj;
+    }
 }

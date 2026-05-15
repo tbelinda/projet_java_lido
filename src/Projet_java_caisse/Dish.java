@@ -13,5 +13,11 @@ public class Dish extends Product {
     public void afficher_detail() {
         System.out.println("Plat (" + type + ") : " + nom + " | " + prix + "€");
     }
+
+    public JSONObject toJSONObject() {
+        JSONObject obj = super.toJSONObject();
+        obj.put("type", type);
+        return obj;
+    }
 }
 

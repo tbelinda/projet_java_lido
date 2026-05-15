@@ -27,7 +27,7 @@ public class Main {
 
         while (choix != 4) {
             if (choix == 1) {
-                Paiement.afficherProduit(catalogue, scan);
+                Catalogue.afficherProduit(catalogue, scan);
             }
             if (choix == 2) {
                 Paiement.realiserPaiement(catalogue, scan);

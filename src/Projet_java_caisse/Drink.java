@@ -13,4 +13,10 @@ public class Drink extends Product {
     public void afficher_detail() {
         System.out.println("Boisson (" + volume + "cl) : " + nom + " | " + prix + "€");
     }
+
+    public JSONObject toJSONObject() {
+        JSONObject obj = super.toJSONObject();
+        obj.put("volume", volume);
+        return obj;
+    }
 }

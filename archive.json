@@ -272,5 +272,36 @@
         "name": "Tiramisu"
       }
     ]
+  },
+  {
+    "date": "08/10/2024 20:30",
+    "tabNum": 6,
+    "nbOfPeople": 2,
+    "products": [
+      {
+        "price": 7,
+        "name": "Quatro Stagioni"
+      },
+      {
+        "price": 16,
+        "name": "Scaloppina alla milanese"
+      },
+      {
+        "price": 2,
+        "name": "Biscotto"
+      },
+      {
+        "price": 5,
+        "name": "Tiramisu"
+      },
+      {
+        "price": 2,
+        "name": "Coca"
+      },
+      {
+        "price": 4,
+        "name": "Birra alla spina"
+      }
+    ]
   }
 ]

@@ -15,4 +15,11 @@ public abstract class Product {
     }
 
     public abstract void afficher_detail();
+
+    public JSONObject toJSONObject() {
+        JSONObject obj = new JSONObject();
+        obj.put("name", nom);
+        obj.put("price", prix);
+        return obj;
+    }
 }
