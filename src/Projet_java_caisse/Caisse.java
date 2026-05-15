@@ -16,7 +16,7 @@ public class Caisse {
         this.scan = scan;
     }
     public void caisse_secours() throws IOException {
-        IO.println("Saisir le numérode la table : ");
+        IO.println("Saisir le numérode de la table : ");
         int num = scan.nextInt();
         IO.println("Saisir le nombre de personne : ");
         int nbr = scan.nextInt();
