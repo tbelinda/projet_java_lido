@@ -3,41 +3,42 @@ package Projet_java_caisse;
 import org.json.*;
 import java.nio.file.*;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String contenu = Files.readString(Path.of("products (2).json"));
-        JSONObject json = new JSONObject(contenu);
-        JSONArray dishes = json.getJSONArray("dishes");
-        JSONArray drinks = json.getJSONArray("drinks");
-        JSONArray desserts = json.getJSONArray("desserts");
-        ArrayList<Product> prod = new ArrayList<>();
-        for (int i = 0; i < dishes.length(); i++) {
-            JSONObject dish = dishes.getJSONObject(i);
-            String name = dish.getString("name");
-            Double price = dish.getDouble("price");
-            String type = dish.getString("type");
-            Dish d = new Dish(name, price, type);
-            prod.add(d);
-        }
-        for (int i = 0; i < desserts.length(); i++) {
-            JSONObject dessert = desserts.getJSONObject(i);
-            String name = dessert.getString("name");
-            Double price = dessert.getDouble("price");
-            int calories = dessert.getInt("calories");
-            Dessert de = new Dessert(name, price, calories);
-            prod.add(de);
-        }
-        for (int i = 0; i < drinks.length(); i++) {
-            JSONObject drink = drinks.getJSONObject(i);
-            String name = drink.getString("name");
-            Double price = drink.getDouble("price");
-            Double volume = drink.getDouble("volume");
-            Drink dr = new Drink(name, price, volume);
-            prod.add(dr);
+        List<Product> catalogue = new ArrayList<>();
+
+        try {
+            String contenu = Files.readString(Paths.get("products.json"));
+            JSONObject base = new JSONObject(contenu);
+
+            JSONArray plats = base.getJSONArray("dishes");
+            for (int i = 0; i < plats.length(); i++) catalogue.add(new Dish(plats.getJSONObject(i)));
+
+            JSONArray desserts = base.getJSONArray("desserts");
+            for (int i = 0; i < desserts.length(); i++) catalogue.add(new Dessert(desserts.getJSONObject(i)));
+
+            JSONArray boissons = base.getJSONArray("drinks");
+            for (int i = 0; i < boissons.length(); i++) catalogue.add(new Drink(boissons.getJSONObject(i)));
+
+            System.out.println("=== MENU DU RESTAURANT ===");
+            for (int i = 0; i < catalogue.size(); i++) {
+                System.out.println((i + 1) + " - " + catalogue.get(i).getNom());
+            }
+
+            Scanner sc = new Scanner(System.in);
+            System.out.print("\nEntrez le numéro du produit : ");
+            int choix = sc.nextInt();
+
+            if (choix > 0 && choix <= catalogue.size()) {
+                catalogue.get(choix - 1).afficher_detail();
+            } else {
+                System.out.println("Numéro invalide.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erreur de chargement : " + e.getMessage());
         }
         Scanner scan = new Scanner(System.in);
         String menu = "1 - Afficher les détails d'un produit\n2 - Réaliser le paiement d'une table\n3 - Utiliser la caisser de secours\n4 - Quitter";
@@ -49,7 +50,7 @@ public class Main {
             if (choix == 1){
                 int i = 1;
                 for (Product produ : prod) {
-                    IO.println(i + " - " + produ.name);
+                    IO.println(i + " - " + produ.nom);
                     i++;
                 }
             }
@@ -67,7 +68,7 @@ public class Main {
                 for (int i = 0; i < produitsNoms.length(); i++) {
                     String nomProduit = produitsNoms.getString(i);
                     for (Product p : prod) {
-                        if (p.name.equals(nomProduit)) {
+                        if (p.nom.equals(nomProduit)) {
                             produitsCommande.add(p);
                         }
                     }

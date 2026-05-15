@@ -1,15 +1,16 @@
 package Projet_java_caisse;
+import org.json.JSONObject;
 
 public class Drink extends Product {
+    private int volume;
 
-    double volume;
-
-    public Drink(String name, double price, double volume){
-        super(name, price);
-        this.volume = volume;
-
+    public Drink(JSONObject json) {
+        super(json);
+        this.volume = json.getInt("volume");
     }
-    public void afficher_details(){
-        IO.println(name + " - " + price + "€ - Volume: "+ volume +"cl");
+
+    @Override
+    public void afficher_detail() {
+        System.out.println("Boisson (" + volume + "cl) : " + nom + " | " + prix + "€");
     }
 }

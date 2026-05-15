@@ -1,14 +1,17 @@
 package Projet_java_caisse;
 
-public class Dessert extends Product {
-    int calories;
-    public Dessert(String name, double price, int calories){
-        super(name, price);
-        this.calories = calories;
+import org.json.JSONObject;
 
+public class Dessert extends Product {
+    private int calories;
+
+    public Dessert(JSONObject json) {
+        super(json);
+        this.calories = json.getInt("calories");
     }
 
-    public void afficher_details(){
-        IO.println(name + " - " + price + "€ - Calories: " + calories + "kcal");
+    @Override
+    public void afficher_detail() {
+        System.out.println("Dessert (" + calories + " kcal) : " + nom + " | " + prix + "€");
     }
 }

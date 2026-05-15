@@ -1,15 +1,17 @@
 package Projet_java_caisse;
+import org.json.JSONObject;
 
 public class Dish extends Product {
-    String type;
+    private String type;
 
-    public Dish(String name, double price, String type){
-        super(name, price);
-        this.type = type;
+    public Dish(JSONObject json) {
+        super(json);
+        this.type = json.getString("type");
     }
-    public void afficher_details(){
-        IO.println(name + " - " + price + "€ - Type: " + type);
+
+    @Override
+    public void afficher_detail() {
+        System.out.println("Plat (" + type + ") : " + nom + " | " + prix + "€");
     }
 }
-
 
