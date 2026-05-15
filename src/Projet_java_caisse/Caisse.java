@@ -8,10 +8,10 @@ import org.json.*;
 
 
 public class Caisse {
-    List<Product> prod;
+    List<Produit> prod;
     Scanner scan;
 
-    public Caisse(List<Product> prod, Scanner scan) {
+    public Caisse(List<Produit> prod, Scanner scan) {
         this.prod = prod;
         this.scan = scan;
     }
@@ -21,11 +21,11 @@ public class Caisse {
         IO.println("Saisir le nombre de personne : ");
         int nbr = scan.nextInt();
         int i = 1;
-        for (Product produ : prod) {
+        for (Produit produ : prod) {
             IO.println(i + " - " + produ.nom);
             i++;
         }
-        ArrayList<Product> produitsCommandes = new ArrayList<>();
+        ArrayList<Produit> produitsCommandes = new ArrayList<>();
         int nprod;
         String date = LocalDateTime.now().toString();
         do {

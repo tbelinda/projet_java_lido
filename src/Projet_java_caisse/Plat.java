@@ -1,10 +1,10 @@
 package Projet_java_caisse;
 import org.json.JSONObject;
 
-public class Dish extends Product {
-    private String type;
+public class Plat extends Produit {
+    String type;
 
-    public Dish(JSONObject json) {
+    public Plat(JSONObject json) {
         super(json);
         this.type = json.getString("type");
     }

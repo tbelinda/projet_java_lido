@@ -7,17 +7,17 @@ public class Commande {
     int tabNum;
     String date;
     int nbOfPeople;
-    ArrayList<Product> product = new ArrayList<>();
+    ArrayList<Produit> produit = new ArrayList<>();
 
-    public Commande(int tabNum, String date, int nbOfPeople, ArrayList<Product> product){
+    public Commande(int tabNum, String date, int nbOfPeople, ArrayList<Produit> produit){
         this.tabNum = tabNum;
         this.date = date;
         this.nbOfPeople = nbOfPeople;
-        this.product = product;
+        this.produit = produit;
     }
     public double calculerTotal(){
         double total = 0;
-        for (Product jsp : product){
+        for (Produit jsp : produit){
             total += jsp.prix;
         }
     return total;
@@ -28,7 +28,7 @@ public class Commande {
         obj.put("date", date);
         obj.put("nbOfPeople", nbOfPeople);
         JSONArray produits = new JSONArray();
-        for (Product p : product) {
+        for (Produit p : produit) {
             produits.put(p.toJSONObject());
         }
         obj.put("products", produits);

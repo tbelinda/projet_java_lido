@@ -6,9 +6,9 @@ import java.util.*;
 
 public class Paiement {
 
-    public static void afficherProduit(List<Product> catalogue, Scanner scan) {
+    public static void afficherProduit(List<Produit> catalogue, Scanner scan) {
         int i = 1;
-        for (Product p : catalogue) {
+        for (Produit p : catalogue) {
             IO.println(i + " - " + p.getNom());
             i++;
         }
@@ -21,7 +21,7 @@ public class Paiement {
         }
     }
 
-    public static void realiserPaiement(List<Product> catalogue, Scanner scan) {
+    public static void realiserPaiement(List<Produit> catalogue, Scanner scan) {
         try {
             IO.println("Saisir le numéro de la table : ");
             int numTable = scan.nextInt();
@@ -41,10 +41,10 @@ public class Paiement {
             JSONArray produitsNoms = jsonCommande.getJSONArray("products");
 
             // Recherche des produits dans le catalogue
-            ArrayList<Product> produitsCommande = new ArrayList<>();
+            ArrayList<Produit> produitsCommande = new ArrayList<>();
             for (int i = 0; i < produitsNoms.length(); i++) {
                 String nomProduit = produitsNoms.getString(i);
-                for (Product p : catalogue) {
+                for (Produit p : catalogue) {
                     if (p.nom.equals(nomProduit)) {
                         produitsCommande.add(p);
                     }

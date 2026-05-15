@@ -3,9 +3,9 @@ package Projet_java_caisse;
 import java.util.*;
 
 public class Catalogue {
-    public static void afficherProduit(List<Product> catalogue, Scanner scan) {
+    public static void afficherProduit(List<Produit> catalogue, Scanner scan) {
         int i = 1;
-        for (Product p : catalogue) {
+        for (Produit p : catalogue) {
             IO.println(i + " - " + p.getNom());
             i++;
         }

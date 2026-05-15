@@ -2,8 +2,8 @@ package Projet_java_caisse;
 
 import org.json.JSONObject;
 
-public class Dessert extends Product {
-    private int calories;
+public class Dessert extends Produit {
+    int calories;
 
     public Dessert(JSONObject json) {
         super(json);

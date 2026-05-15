@@ -1,10 +1,10 @@
 package Projet_java_caisse;
 import org.json.JSONObject;
 
-public class Drink extends Product {
-    private int volume;
+public class Boisson extends Produit {
+    int volume;
 
-    public Drink(JSONObject json) {
+    public Boisson(JSONObject json) {
         super(json);
         this.volume = json.getInt("volume");
     }
