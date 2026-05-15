@@ -53,69 +53,35 @@ public class Main {
                     i++;
                 }
             }
+
             if (choix == 2){
-                if (choix == 2){
-                    IO.println("Saisir le numéro de la table : ");
-                    int numTable = scan.nextInt();
-                    String contenuCommande = Files.readString(Path.of(numTable + ".json"));
-                    JSONObject jsonCommande = new JSONObject(contenuCommande);
-                    int tabNum = jsonCommande.getInt("tabNum");
-                    String dateCommande = jsonCommande.getString("date");
-                    int nbPeople = jsonCommande.getInt("nbOfPeople");
-                    JSONArray produitsNoms = jsonCommande.getJSONArray("products");
-                    ArrayList<Product> produitsCommande = new ArrayList<>();
-                    for (int i = 0; i < produitsNoms.length(); i++) {
-                        String nomProduit = produitsNoms.getString(i);
-                        for (Product p : prod) {
-                            if (p.name.equals(nomProduit)) {
-                                produitsCommande.add(p);
-                            }
+                IO.println("Saisir le numéro de la table : ");
+                int numTable = scan.nextInt();
+                String contenuCommande = Files.readString(Path.of(numTable + ".json"));
+                JSONObject jsonCommande = new JSONObject(contenuCommande);
+                int tabNum = jsonCommande.getInt("tabNum");
+                String dateCommande = jsonCommande.getString("date");
+                int nbPeople = jsonCommande.getInt("nbOfPeople");
+                JSONArray produitsNoms = jsonCommande.getJSONArray("products");
+                ArrayList<Product> produitsCommande = new ArrayList<>();
+                for (int i = 0; i < produitsNoms.length(); i++) {
+                    String nomProduit = produitsNoms.getString(i);
+                    for (Product p : prod) {
+                        if (p.name.equals(nomProduit)) {
+                            produitsCommande.add(p);
                         }
                     }
-                    Commande commande = new Commande(tabNum, dateCommande, nbPeople, produitsCommande);
-                    double total = commande.calculerTotal();
-                    IO.println("Total : " + total + "€");
-                    JSONObject archiveObj = commande.toJSONObject();
-                    Files.writeString(Path.of("archive.json"), archiveObj.toString());
                 }
+                Commande commande = new Commande(tabNum, dateCommande, nbPeople, produitsCommande);
+                double total = commande.calculerTotal();
+                IO.println("Total : " + total + "€");
+                JSONObject archiveObj = commande.toJSONObject();
+                Files.writeString(Path.of("archive.json"), archiveObj.toString());
 
             }
             if (choix == 3){
-                IO.println("Saisir le numérode la table : ");
-                int num = scan.nextInt();
-                IO.println("Saisir le nombre de personne : ");
-                int nbr = scan.nextInt();
-                int i = 1;
-                for (Product produ : prod) {
-                    IO.println(i + " - " + produ.name);
-                    i++;
-                }
-                ArrayList<Product> produitsCommandes = new ArrayList<>();
-                int nprod;
-                String date = LocalDateTime.now().toString();
-                do {
-                    IO.println("Saisir le numéro du produit (0 pour arrêter) : ");
-                    nprod = scan.nextInt();
-                    if (nprod >= 0 && nprod <= prod.size()){
-                        if (nprod != 0) {
-                            produitsCommandes.add(prod.get(nprod - 1));
-                        }
-                    }
-                    else {
-                        IO.println("Numéro invalide veuillez recommencer : ");
-                        nprod = scan.nextInt();
-                    }
-                } while(nprod != 0);
-                Commande com = new Commande(num,date, nbr, produitsCommandes);
-                double res = com.calculerTotal();
-                IO.println(res);
-                JSONObject archive = com.toJSONObject();
-                String contenuArchive = Files.readString(Path.of("archive.json"));
-                JSONArray archives = new JSONArray(contenuArchive);
-                archives.put(archive);
-                Files.writeString(Path.of("archive.json"), archives.toString(2));
-
-
+                Caisse caisse = new Caisse(prod, scan);
+                caisse.caisse_secours();
             }
             IO.println(menu);
             IO.println("Choix");
