@@ -43,7 +43,7 @@ public class Caisse {
         } while(nprod != 0);
         Commande com = new Commande(num,date, nbr, produitsCommandes);
         double res = com.calculerTotal();
-        IO.println(res);
+        IO.println("Total : " + res + "€");
         JSONObject archive = com.toJSONObject();
         String contenuArchive = Files.readString(Path.of("archive.json"));
         JSONArray archives = new JSONArray(contenuArchive);

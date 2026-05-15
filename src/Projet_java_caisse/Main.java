@@ -22,7 +22,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String menu = "1 - Afficher les détails d'un produit\n2 - Réaliser le paiement d'une table\n3 - Utiliser la caisse de secours\n4 - Quitter";
         IO.println(menu);
-        IO.println("Choix");
+        IO.println("Votre choix");
         int choix = scan.nextInt();
 
         while (choix != 4) {
@@ -37,7 +37,7 @@ public class Main {
                 caisse.caisse_secours();
             }
             IO.println(menu);
-            IO.println("Choix");
+            IO.println("Votre choix");
             choix = scan.nextInt();
         }
 
