@@ -54,7 +54,7 @@ public class Main {
                     i++;
                 }
             }
-
+//realiser le paiement
             if (choix == 2){
                 IO.println("Saisir le numéro de la table : ");
                 int numTable = scan.nextInt();
