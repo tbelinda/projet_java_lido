@@ -18,7 +18,7 @@ public class Commande {
     public double calculerTotal(){
         double total = 0;
         for (Product jsp : product){
-            total += jsp.price;
+            total += jsp.prix;
         }
     return total;
     }
@@ -30,8 +30,8 @@ public class Commande {
         JSONArray produits = new JSONArray();
         for (Product p : product) {
             JSONObject pro = new JSONObject();
-            pro.put("name", p.name);
-            pro.put("price", p.price);
+            pro.put("name", p.nom);
+            pro.put("price", p.prix);
             produits.put(pro);
         }
         obj.put("products", produits);

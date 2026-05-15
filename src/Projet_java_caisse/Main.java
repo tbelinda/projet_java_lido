@@ -49,7 +49,7 @@ public class Main {
         while(choix != 4){
             if (choix == 1){
                 int i = 1;
-                for (Product produ : prod) {
+                for (Product produ : catalogue) {
                     IO.println(i + " - " + produ.nom);
                     i++;
                 }
@@ -67,7 +67,7 @@ public class Main {
                 ArrayList<Product> produitsCommande = new ArrayList<>();
                 for (int i = 0; i < produitsNoms.length(); i++) {
                     String nomProduit = produitsNoms.getString(i);
-                    for (Product p : prod) {
+                    for (Product p : catalogue) {
                         if (p.nom.equals(nomProduit)) {
                             produitsCommande.add(p);
                         }
@@ -81,7 +81,7 @@ public class Main {
 
             }
             if (choix == 3){
-                Caisse caisse = new Caisse(prod, scan);
+                Caisse caisse = new Caisse(catalogue, scan);
                 caisse.caisse_secours();
             }
             IO.println(menu);

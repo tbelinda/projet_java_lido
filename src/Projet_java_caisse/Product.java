@@ -1,12 +1,18 @@
 package Projet_java_caisse;
+import org.json.JSONObject;
 
 public abstract class Product {
-    protected String name;
-    protected double price;
+    protected String nom;
+    protected double prix;
 
-    public Product(String name, double price){
-        this.name = name;
-        this.price = price;
+    public Product(JSONObject json) {
+        this.nom = json.getString("name");
+        this.prix = json.getDouble("price");
     }
-    public abstract void afficher_details();
+
+    public String getNom() {
+        return nom;
+    }
+
+    public abstract void afficher_detail();
 }

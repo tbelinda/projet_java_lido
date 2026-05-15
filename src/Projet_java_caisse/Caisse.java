@@ -9,10 +9,10 @@ import java.nio.file.*;
 
 
 public class Caisse {
-    ArrayList<Product> prod;
+    List<Product> prod;
     Scanner scan;
 
-    public Caisse(ArrayList<Product> prod, Scanner scan) {
+    public Caisse(List<Product> prod, Scanner scan) {
         this.prod = prod;
         this.scan = scan;
     }
@@ -23,7 +23,7 @@ public class Caisse {
         int nbr = scan.nextInt();
         int i = 1;
         for (Product produ : prod) {
-            IO.println(i + " - " + produ.name);
+            IO.println(i + " - " + produ.nom);
             i++;
         }
         ArrayList<Product> produitsCommandes = new ArrayList<>();
